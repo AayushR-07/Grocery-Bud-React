@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1!*+d5-puh$r6aqn!n%mpnq#ks@nk7)cgmfbd@3p39&8x#7ir%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com']
 
 
 # Application definition
@@ -127,3 +127,8 @@ STATIC_URL = 'static/'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # React Vite dev server
 ]
+
+
+import os
+SECRET_KEY = os.environ.get('SECRET_KEY', 'your-current-secret-key')
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
